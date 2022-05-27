@@ -1,38 +1,41 @@
 <template>
   <section class="src-components-container">
     <div id="container">
-      <div v-if="isHard">
-        <Square/>
-        <Square/>
-        <Square/>
-        <Square/>
-        <Square/>
-        <Square/>
+      <div v-if="hardAPasar">
+        <Square />
+        <Square />
+        <Square />
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div v-else>
-        <Square/>
-        <Square/>
-        <Square/>
+        <Square />
+        <Square />
+        <Square />
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import Square from './Square.vue';
+import Square from "./Square.vue";
+
 export default {
-  components: { 
-    Square 
+  components: {
+    Square,
   },
   name: "src-components-container",
-  props: [],
-  mounted() {},
+  props: ["hardAPasar"
+  // , "cantidadSquare"
+  ],
+  mounted() {
+  },
   data() {
-    return {
-       isHard : true
-    };
+    return {};
   },
   methods: {},
+
   computed: {},
 };
 </script>
