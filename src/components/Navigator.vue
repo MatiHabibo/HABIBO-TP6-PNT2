@@ -18,118 +18,35 @@
       >
         hard
       </button>
-
-      <!-- <Container :hardAPasar="isHard" /> -->
     </div>
   </section>
 </template>
 
 <script>
-// import Container from "./Container.vue";
-
 export default {
   name: "src-components-navigator",
-  components: {
-    // Container,
-  },
+  components: {},
   props: [],
-  mounted() {},
+  mounted() {
+    this.emit();
+  },
   data() {
     return {
       isHard: true,
-      colorCount: 6,
-      // pickedColor = colors[PickColor()],
-      // colors = [],
-      // squares = []
     };
   },
   methods: {
+    emit() {
+      this.$emit("isHard", this.isHard);
+    },
     easyToHard() {
-      this.isHard= false;
-      this.$emit('isHard', this.isHard)
-      // if (this.isHard) {
-      //   this.colorCount = 3;
-      //   this.isHard = !this.isHard;
-      //   this.restart();
-      // }
+      this.isHard = false;
+      this.$emit("isHard", this.isHard);
     },
     hardToEasy() {
-      this.isHard= true;
-      this.$emit('isHard', this.isHard)
-      // if (!this.isHard) {
-      //   this.isHard = !this.isHard;
-      //   this.colorCount = 6;
-      //   this.restart();
-      // }
+      this.isHard = true;
+      this.$emit("isHard", this.isHard);
     },
-
-//  init(){
-// 	for (var i = 0; i <squares.length; i++) {
-// 		console.log(colors[i])
-// 	squares[i].style.backgroundColor = colors[i];
-// 	squares[i].addEventListener("click", function(){
-// 		var clickedColor = this.style.backgroundColor;
-// 		if (clickedColor === pickedColor) {
-// 			messageDisplay.textContent = "You Picked Right!";
-// 			setAllColorsTo(pickedColor);
-// 			restartButton.textContent = "Play Again!";
-// 			header.style.backgroundColor = pickedColor;
-// 		} else {
-// 			this.style.backgroundColor = "#232323";
-// 			messageDisplay.textContent = "Try Again!";
-// 			messageDisplay.style.color = "#000000";
-// 		}
-// 	});
-// }
-
-//  restart();
-// }
-
-    restart() {
-      console.log('tocaste new');
-      this.colors = this.createNewColors(this.colorCount);
-      this.pickedColor = this.colors[this.PickColor()];
-      this.colorDisplay.textContent = this.pickedColor;
-      this.textContent = "Pick New Colors!";
-      this.header.style.backgroundColor = "steelblue";
-      this.messageDisplay.textContent = "";
-      this.restartButton.textContent = "New Colors!";
-      for (var i = 0; i < this.colorCount; i++) {
-        this.squares[i].style.backgroundColor = this.colors[i];
-      }
-    },
-    
-    createRandomStringColor() {
-      var newColor =
-        "rgb(" +
-        this.randomInt() +
-        ", " +
-        this.randomInt() +
-        ", " +
-        this.randomInt() +
-        ")";
-      //	console.log(newColor);
-      return newColor;
-    },
-    randomInt() {
-      return Math.floor(Math.random() * 256);
-    },
-    PickColor() {
-      if (this.isHard) {
-        this.colorCount = 6;
-      } else {
-        this.colorCount = 3;
-      }
-      return Math.floor(Math.random() * this.colorCount);
-    },
-    createNewColors(numbers){
-	var arr = [];
-	for (var i = 0; i < numbers; i++) {
-		arr.push(this.createRandomStringColor());
-	}
-    return arr;
-},
-
   },
   computed: {},
 };

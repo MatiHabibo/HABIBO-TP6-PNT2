@@ -1,8 +1,8 @@
 <template>
   <div class="app">
-    <Header />
+    <Header :colorRgb="colorRgb"/>
     <Navigator @isHard="isHard = $event"/>
-    <Container :isHard="isHard"/>
+    <Container :isHard="isHard" @colorRgb="colorRgb = $event"/>
   </div>
 </template>
 

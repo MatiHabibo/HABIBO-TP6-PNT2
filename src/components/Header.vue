@@ -3,7 +3,7 @@
     <div id="header">
       <h1>
         The Great <br />
-        <span id="colorDisplay">RGB</span>
+        <span id="colorDisplay"> {{ colorRgb }}</span>
         <br />
         Guessing Game
       </h1>
@@ -14,12 +14,14 @@
 <script>
 export default {
   name: "src-components-header",
-  props: [],
-  mounted() {},
+  props: ['colorRgb'],
+  mounted() {
+  },
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+  },
   computed: {},
 };
 </script>
