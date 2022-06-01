@@ -1,7 +1,11 @@
 <template>
   <section class="src-components-container">
     <div id="container">
-      <div v-if="hardAPasar">
+
+      <h2 style="color: red">{{ isHard }}</h2>
+      <Square v-for="(color, index) in colors" :color="color" :key="index"/>
+
+      <!-- <div v-if="hardAPasar">
         <Square />
         <Square />
         <Square />
@@ -13,7 +17,7 @@
         <Square />
         <Square />
         <Square />
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
@@ -26,13 +30,18 @@ export default {
     Square,
   },
   name: "src-components-container",
-  props: ["hardAPasar"
+  props: [
+    'isHard'
+    //"hardAPasar"
   // , "cantidadSquare"
   ],
   mounted() {
+    
   },
   data() {
-    return {};
+    return {
+      colors:['red', 'green', 'brown', 'blue', 'yellow', 'grey']
+    };
   },
   methods: {},
 

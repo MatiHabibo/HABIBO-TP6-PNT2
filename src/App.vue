@@ -1,8 +1,8 @@
 <template>
   <div class="app">
     <Header />
-    <Navigator />
-    <!-- <Container /> -->
+    <Navigator @isHard="isHard = $event"/>
+    <Container :isHard="isHard"/>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ import "bootstrap";
 
 import Header from "./components/Header.vue";
 import Navigator from "./components/Navigator.vue";
-// import Container from "./components/Container.vue";
+ import Container from "./components/Container.vue";
 
 
 export default {
@@ -22,8 +22,13 @@ export default {
   components: {
     Header,
     Navigator,
-    // Container
+    Container
   },
+  data(){
+    return{
+      isHard:false
+    }
+  }
 };
 </script>
 

@@ -1,13 +1,13 @@
 <template>
   <section class="src-components-square">
-    <div class="square"></div>
+    <div class="square" :style="{background: this.color}"></div>
   </section>
 </template>
 
 <script>
 export default {
   name: "src-components-square",
-  props: [],
+  props: ['color'],
   mounted() {},
   data() {
     return {};

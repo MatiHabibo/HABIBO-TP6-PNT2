@@ -4,9 +4,6 @@
       <button id="reset" @click="restart()">New colors</button>
       <span id="message"> Juega! </span>
 
-      <!-- <button id="easy" @click="easyBtn()" :class="getClass(isHard)">easy</button>
-      <button id="hard" class="selected" :class="getClass(isHard)" @click="hardBtn()">hard</button> -->
-
       <button
         id="easy"
         :class="[!isHard ? 'selected' : '']"
@@ -22,18 +19,18 @@
         hard
       </button>
 
-      <Container :hardAPasar="isHard" />
+      <!-- <Container :hardAPasar="isHard" /> -->
     </div>
   </section>
 </template>
 
 <script>
-import Container from "./Container.vue";
+// import Container from "./Container.vue";
 
 export default {
   name: "src-components-navigator",
   components: {
-    Container,
+    // Container,
   },
   props: [],
   mounted() {},
@@ -48,18 +45,22 @@ export default {
   },
   methods: {
     easyToHard() {
-      if (this.isHard) {
-        this.colorCount = 3;
-        this.isHard = !this.isHard;
-        this.restart();
-      }
+      this.isHard= false;
+      this.$emit('isHard', this.isHard)
+      // if (this.isHard) {
+      //   this.colorCount = 3;
+      //   this.isHard = !this.isHard;
+      //   this.restart();
+      // }
     },
     hardToEasy() {
-      if (!this.isHard) {
-        this.isHard = !this.isHard;
-        this.colorCount = 6;
-         this.restart();
-      }
+      this.isHard= true;
+      this.$emit('isHard', this.isHard)
+      // if (!this.isHard) {
+      //   this.isHard = !this.isHard;
+      //   this.colorCount = 6;
+      //   this.restart();
+      // }
     },
 
 //  init(){
@@ -129,50 +130,6 @@ export default {
     return arr;
 },
 
-    //   getClass(isHard){
-    //     if(isHard){
-    //       return "selected"
-    //     }else{
-    //       return ""
-    //     }
-    //   }
-    //   ,
-    //   easyBtn() {
-    //     if (this.isHard) {
-    //       this.isHard = true;
-    //       // easyButton.classList.add("selected");
-    //       // hardButton.classList.remove("selected");
-    //       // colorCount = 3;
-    //       // for (var i = 0; i < colorCount; i++) {
-    //       //   squares[i + 3].style.display = "none";
-    //       // }
-    //       // restart();
-    //     }
-    //   },
-    //   hardBtn() {
-    //     if (!this.isHard) {
-    //       this.isHard = false;
-    //       // hardButton.classList.add("selected");
-    //       // easyButton.classList.remove("selected");
-    //       // colorCount = 6;
-    //       // restart();
-    //       // for (var i = 3; i < 6; i++) {
-    //       // 	squares[i].style.display = "block";
-    //       // }
-    //     }
-    //   },
-    //   // restart() {
-    //   //   colors = createNewColors(colorCount);
-    //   //   pickedColor = colors[PickColor()];
-    //   //   colorDisplay.textContent = pickedColor;
-    //   //   this.textContent = "Pick New Colors!";
-    //   //   header.style.backgroundColor = "steelblue";
-    //   //   messageDisplay.textContent = "";
-    //   //   restartButton.textContent = "New Colors!";
-    //   //   for (var i = 0; i < squares.length; i++) {
-    //   //     squares[i].style.backgroundColor = colors[i];
-    //   //   }
-    //   // },
   },
   computed: {},
 };
