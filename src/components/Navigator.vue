@@ -33,19 +33,26 @@ export default {
   data() {
     return {
       isHard: true,
+      colCount : 6,
     };
   },
   methods: {
     emit() {
       this.$emit("isHard", this.isHard);
+      this.$emit("colCount", this.colCount);
     },
     easyToHard() {
       this.isHard = false;
+      this.colCount = 3;
       this.$emit("isHard", this.isHard);
+      this.$emit("colCount", this.colCount);
+
     },
     hardToEasy() {
       this.isHard = true;
+      this.colCount = 6;
       this.$emit("isHard", this.isHard);
+      this.$emit("colCount", this.colCount);
     },
   },
   computed: {},

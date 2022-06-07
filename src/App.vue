@@ -1,8 +1,8 @@
 <template>
   <div class="app">
     <Header :colorRgb="colorRgb"/>
-    <Navigator @isHard="isHard = $event"/>
-    <Container :isHard="isHard" @colorRgb="colorRgb = $event"/>
+    <Navigator @isHard="isHard = $event" @colCount="colCount = $event"/>
+    <Container :isHard="isHard" @colorRgb="colorRgb = $event" :colCount="colCount"/>
   </div>
 </template>
 
@@ -26,7 +26,10 @@ export default {
   },
   data(){
     return{
-      isHard:false
+      isHard:false,
+      colCount: 6,
+      colorRgb: ''
+
     }
   }
 };
