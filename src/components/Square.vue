@@ -1,24 +1,43 @@
 <template>
   <section class="src-components-square">
-    <div class="square" :style="{background: this.color}"></div>
+      <div class="square" @click="getColor()" :class="isWrong && 'displayNone'"
+      :style="{ 'background-color': isWrong ? '#232323' : color }">
+    </div>
   </section>
 </template>
 
 <script>
 export default {
   name: "src-components-square",
-  props: ['color'],
+  props: ['color', 'pickedColor'],
   mounted() {},
   data() {
-    return {};
+    return {
+      isWrong : false
+    };
   },
-  methods: {},
+  methods: {
+    getColor() {
+      let msg = '';
+      if (this.colorRgb === this.color) {
+        msg = "You win";
+      } else {
+        msg = "Choose another color";
+        this.isWrong = true;
+      }
+      this.$parent.$emit('selectedColor', this.color);
+      this.$parent.$emit('message', msg);
+    }
+  },
   computed: {},
 };
 </script>
 
 <style scoped lang="css">
 .src-components-square {
+}
+.displayNone {
+  background-color: #232323;
 }
 .square {
   width: 30%;

@@ -1,8 +1,10 @@
 <template>
   <div class="app">
-    <Header :colorRgb="colorRgb"/>
-    <Navigator @isHard="isHard = $event" @colCount="colCount = $event"/>
-    <Container :isHard="isHard" @colorRgb="colorRgb = $event" :colCount="colCount"/>
+       <Header :pickedColor="pickedColor" />
+    <Navigator @isHard="isHard = $event" @squareQty="squareQty = $event" @colors="getColors" @pickedColor="getPicked"
+      :message="message" />
+    <Container :squareQty="squareQty" :colors="colors" @selectedColor="getSelected" @pickedColor="getPicked"
+      @message="getMessage" :pickedColor="pickedColor" />
   </div>
 </template>
 
@@ -26,10 +28,27 @@ export default {
   },
   data(){
     return{
-      isHard:false,
-      colCount: 6,
-      colorRgb: ''
-
+      isHard: true,
+      squareQty: 0,
+      colors: [],
+      selectedColor: '',
+      pickedColor: '',
+      message: '',
+    }
+  },
+  methods : {
+    getColors(e) {
+      this.colors = e;
+    },
+    getSelected(e) {
+      this.selectedColor = e;
+    },
+    getPicked(e) {
+      console.log(e);
+      this.pickedColor = e;
+    },
+    getMessage(e) {
+      this.message = e;
     }
   }
 };
