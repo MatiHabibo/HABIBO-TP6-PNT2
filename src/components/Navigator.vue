@@ -1,7 +1,7 @@
 <template>
   <section class="src-components-navigator">
     <div id="navigator">
-      <button id="reset" @click="restart()">New colors</button>
+      <button id="reset" @click="restart()">{{ message != 'You win' ? 'New colors' : 'Play again' }}</button>
       <span class="msg">{{ message }} </span>
 
       <button
@@ -58,7 +58,7 @@ export default {
       this.$emit("squareQty", this.squareQty);
       this.restart();
     },
-        init(squareQty) {
+    init(squareQty) {
       this.colors = this.createNewColors(squareQty);
       this.pickedColor = this.colors[this.pickColor()];
       this.$emit('colors', this.colors);
@@ -90,6 +90,7 @@ export default {
     restart() {
       this.colors = this.createNewColors(this.squareQty);
       this.pickedColor = this.colors[this.pickColor()];
+      this.$emit('mes', this.message)
       this.$emit('colors', this.colors);
       this.$emit('pickedColor', this.pickedColor)
 
