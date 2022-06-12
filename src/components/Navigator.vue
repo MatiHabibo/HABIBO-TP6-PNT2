@@ -48,6 +48,7 @@ export default {
       this.squareQty = 3;
       this.$emit("isHard", this.isHard);
       this.$emit("squareQty", this.squareQty);
+      this.restart();
 
     },
     hardToEasy() {
@@ -55,6 +56,7 @@ export default {
       this.squareQty = 6;
       this.$emit("isHard", this.isHard);
       this.$emit("squareQty", this.squareQty);
+      this.restart();
     },
         init(squareQty) {
       this.colors = this.createNewColors(squareQty);
@@ -87,7 +89,9 @@ export default {
     },
     restart() {
       this.colors = this.createNewColors(this.squareQty);
+      this.pickedColor = this.colors[this.pickColor()];
       this.$emit('colors', this.colors);
+      this.$emit('pickedColor', this.pickedColor)
 
     }
   },

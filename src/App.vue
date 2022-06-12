@@ -48,6 +48,7 @@ export default {
       this.pickedColor = e;
     },
     getMessage(e) {
+      console.log('el mnsaje es: ' + e)
       this.message = e;
     }
   }

@@ -1,10 +1,17 @@
 <template>
   <section class="src-components-container">
     <div id="container">
-      <h2 style="color: red">{{ isHard }}</h2>
-      <h3 style="color: red">{{ colCount }}</h3>
-      <Square v-for="(square, index) in squareQty" :key="index" :color="colors[index]" :pickedColor="
-      pickedColor" @selectedColor="selectedColor = $event" />
+      <!-- <h2 style="color: red">{{ isHard }}</h2>
+      <h3 style="color: red">{{ colCount }}</h3> -->
+      
+      <Square
+        v-for="(square, index) in squareQty"
+        :key="index"
+        :color="colors[index]"
+        :pickedColor="pickedColor"
+        @selectedColor="selectedColor = $event"
+      />
+      <!-- <h3 style="color: red"> {{ message }} </h3> -->
     </div>
   </section>
 </template>
@@ -17,16 +24,20 @@ export default {
     Square,
   },
   name: "src-components-container",
-  props: ["squareQty", "colors", "pickedColor"],
+  props: ["squareQty", "colors", "pickedColor",
+    // "message"
+   ],
 
   data() {
-    return {
-
-    };
+    return {};
   },
   methods: {
-   
-  },
+    // setAllColorsTo(color) {
+    //   if(this.message = 'you win'){
+    //     this.pickedColor;
+    //   });
+    //   }
+    },
 
   computed: {},
 };

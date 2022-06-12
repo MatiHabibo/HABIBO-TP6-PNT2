@@ -3,7 +3,7 @@
     <div id="header">
       <h1>
         The Great <br />
-        <span id="colorDisplay"> RGB {{ pickedColor }}</span>
+        <span id="colorDisplay"> {{ pickedColor }}</span>
         <br />
         Guessing Game
       </h1>
