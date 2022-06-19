@@ -2,7 +2,7 @@
   <section class="src-components-header">
     <div id="header">
       <h1>
-        The Great <br />
+        COLOR! The Great <br />
         <span id="colorDisplay"> {{ pickedColor }}</span>
         <br />
         Guessing Game
