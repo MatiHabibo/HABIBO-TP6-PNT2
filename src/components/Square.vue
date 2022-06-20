@@ -1,6 +1,6 @@
 <template>
    <section class="square-component">
-    <div class="square" @click="getColor(index)" :style="{ 'background-color': status ? '#232323' : color }">
+    <div class="square" @click="getColor(index)" :style="{ 'background-color': setColor }">
     </div>
   </section>
 
@@ -19,6 +19,15 @@ export default {
   methods: {
   },
   computed: {
+    setColor(){
+      let dev;
+      if(this.message == 'You win'){
+        dev = this.pickedColor
+      }else{
+        dev = this.status ? '#232323' : this.color
+      }
+      return dev;
+    }
   }
 }
 </script>
