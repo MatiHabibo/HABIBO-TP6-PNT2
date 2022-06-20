@@ -1,111 +1,32 @@
 <template>
-  <section class="src-components-navigator">
+    <section class="nav-bar">
     <div id="navigator">
-      <button id="reset" @click="restart()">{{ message != 'You win' ? 'New colors' : 'Play again' }}</button>
-      <span class="msg">{{ message }} </span>
-
-      <button
-        id="easy"
-        :class="[!isHard ? 'selected' : '']"
-        @click="easyToHard()"
-      >
-        easy
-      </button>
-      <button
-        id="hard"
-        :class="[isHard ? 'selected' : '']"
-        @click="hardToEasy()"
-      >
-        hard
-      </button>
+      <button id="reset" @click="restart()"> New colors</button>
+      <span class="msg" :style="{color: (message == 'You win' ? 'blue' : 'red')}">{{ message }} </span>
+      <button id="easy" :class="!isHard && 'selected'" @click="setDifficulty({ isHard: false, qty: 3 })">easy</button>
+      <button id="hard" :class="isHard && 'selected'" @click="setDifficulty({ isHard: true, qty: 6 })">hard</button>
     </div>
+
   </section>
+
 </template>
 
-<script>
+<script lang="js">
 export default {
-  name: "src-components-navigator",
-  components: {},
-  props: ['message'],
-  mounted() {
-    this.init(this.squareQty)
-  },
+  name: 'nav-bar',
+  props: [],
   data() {
     return {
-      isHard: false,
-      squareQty: 6,
-      colors: [],
-      pickedColor: '',
-    };
-  },
-  methods: {
-    emit() {
-      this.$emit("isHard", this.isHard);   
-      this.$emit('squareQty', this.squareQty);
-    },
-    easyToHard() {
-      this.isHard = false;
-      this.squareQty = 3;
-      this.$emit("isHard", this.isHard);
-      this.$emit("squareQty", this.squareQty);
-      this.restart();
-
-    },
-    hardToEasy() {
-      this.isHard = true;
-      this.squareQty = 6;
-      this.$emit("isHard", this.isHard);
-      this.$emit("squareQty", this.squareQty);
-      this.restart();
-    },
-    init(squareQty) {
-      this.colors = this.createNewColors(squareQty);
-      this.pickedColor = this.colors[this.pickColor()];
-      this.$emit('colors', this.colors);
-      this.$emit('pickedColor', this.pickedColor);
-    },
-    createNewColors(numbers) {
-      const arr = [];
-      for (let i = 0; i < numbers; i++) {
-        arr.push(this.createRandomStringColor());
-      }
-      return arr;
-    },
-    createRandomStringColor() {
-      const newColor = "rgb(" + this.randomInt() + ", " + this.randomInt() + ", " + this.randomInt() + ")";
-      return newColor;
-    },
-    randomInt() {
-      return Math.floor(Math.random() * 256);
-    },
-    pickColor() {
-      let quantity;
-      if (this.isHard) {
-        quantity = 6;
-      } else {
-        quantity = 3;
-      }
-      return Math.floor(Math.random() * quantity);
-    },
-    restart() {
-      this.colors = this.createNewColors(this.squareQty);
-      this.pickedColor = this.colors[this.pickColor()];
-      this.$emit('mes', this.message)
-      this.$emit('colors', this.colors);
-      this.$emit('pickedColor', this.pickedColor)
-
     }
   },
-  computed: {},
-};
+  methods: {
+  },
+  computed: {
+  }
+}
 </script>
 
 <style scoped lang="css">
-h1 {
-  font-weight: normal;
-  line-height: 1.1;
-  padding: 20px 0;
-}
 #navigator {
   background: #ffffff;
   height: 30px;
@@ -113,9 +34,10 @@ h1 {
   margin: 0;
   margin-top: -30px;
 }
-.selected {
-  background-color: steelblue;
-  color: white;
+.msg {
+  color: red;
+  display: inline-block;
+  width: 20%;
 }
 button {
   border: none;
@@ -133,10 +55,8 @@ button:hover {
   color: white;
   background-color: steelblue;
 }
-
-.msg {
-  color: red;
-  display: inline-block;
-  width: 20%;
+.selected {
+  background-color: steelblue;
+  color: white;
 }
 </style>

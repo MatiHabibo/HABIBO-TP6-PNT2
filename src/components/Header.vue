@@ -1,39 +1,35 @@
 <template>
-  <section class="src-components-header">
+   <section class="header-component">
     <div id="header">
-      <h1>
-        COLOR The Great <br />
-        <span id="colorDisplay"> {{ pickedColor }}</span>
-        <br />
+      <h1>The Great <br>
+        <span id="colorDisplay">RGB</span>
+        <h2>{{ pickedColor }}</h2>
+        <br>
         Guessing Game
       </h1>
     </div>
   </section>
+
 </template>
 
-<script>
+<script lang="js">
 export default {
-  name: "src-components-header",
-  props: ['pickedColor'],
+  name: 'header-component',
+  props: [],
   mounted() {
   },
   data() {
-    return {};
+    return {
+    }
   },
   methods: {
   },
-  computed: {},
-};
+  computed: {
+  }
+}
 </script>
 
 <style scoped lang="css">
-
-h1 {
-  font-weight: normal;
-  line-height: 1.1;
-  padding: 20px 0;
-}
-
 #header {
   transition: all 0.3s;
   background: steelblue;
@@ -41,5 +37,13 @@ h1 {
   text-align: center;
   margin: 0;
   color: white;
+}
+h1 {
+  font-weight: normal;
+  line-height: 1.1;
+  padding: 20px 0;
+}
+#colorDisplay {
+  font-size: 200%;
 }
 </style>
