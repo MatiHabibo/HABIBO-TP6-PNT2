@@ -1,8 +1,8 @@
 <template>
    <section class="header-component">
-    <div id="header">
+    <div id="header" :style="{background: this.setCol }">
       <h1>The Great <br>
-        <span id="colorDisplay">RGB</span>
+        <span id="colorDisplay"></span>
         <h2>{{ pickedColor }}</h2>
         <br>
         Guessing Game
@@ -25,6 +25,10 @@ export default {
   methods: {
   },
   computed: {
+    setCol(){
+      return this.message == 'You win' ?  this.pickedColor : 'steelblue'
+    },
+     
   }
 }
 </script>
@@ -32,7 +36,6 @@ export default {
 <style scoped lang="css">
 #header {
   transition: all 0.3s;
-  background: steelblue;
   text-transform: uppercase;
   text-align: center;
   margin: 0;

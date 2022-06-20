@@ -14,7 +14,6 @@ export default {
   },
   data() {
     return {
-      // isWrong: false,
     }
   },
   methods: {
